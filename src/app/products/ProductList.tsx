@@ -1,30 +1,37 @@
-import { useSearchParams } from "next/navigation";
+"use client";
+
 import { motion } from "framer-motion";
 
-async function fetchProducts(query: string) {
-    const res = await fetch(`https://dummyjson.com/products/search?q=${query}`, {
-        cache: "no-store", // Força SSR em toda requisição
-    });
-    const data = await res.json();
-    return data.products;
-}
+export default function ProductList({ product }: any) {
 
-export default async function ProductList() {
-    const searchParams = useSearchParams();
-    const query = searchParams.get("q") || "";
-    const products = await fetchProducts(query);
+
+    console.log(product);
+    
 
     return (
-        <ul className="grid grid-cols-3 gap-4">
-            {products.map((product: any) => (
+        <ul className="grid grid-cols-6 gap-3">
+            {product.map((item: any) => (
                 <motion.li
-                    key={product.id}
+                    key={item.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="p-4 border rounded"
+                    className="p-4 border rounded shadow-lg"
                 >
-                    {product.title}
+                    <div className="w-auto flex items-center justify-center">
+                       <img
+
+                        src={item.images}
+                        alt={item.title}
+                        className="w-10/12 h-48 object-contain rounded-t"
+                    />  
+                    </div>  
+                   
+                    <div className="p-4">
+                        <h3 className="text-lg font-bold">{item.title}</h3>
+                        <p className="text-sm text-gray-500">{item.description}</p>
+                        <p className="mt-2 text-xl font-semibold">${item.price}</p>
+                    </div>
                 </motion.li>
             ))}
         </ul>
