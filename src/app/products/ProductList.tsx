@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 
 export default function ProductList({ product }: any) {
 
+
+    console.log(product);
+    
+
     return (
-        <ul className="grid grid-cols-4 gap-4">
+        <ul className="grid grid-cols-6 gap-3">
             {product.map((item: any) => (
                 <motion.li
                     key={item.id}
