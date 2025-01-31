@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { TextField, Button, Container, Card, CardContent, Typography, CircularProgress, Alert } from "@mui/material";
@@ -11,7 +11,12 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);  
+    const [isClient, setIsClient] = useState(false); 
     const router = useRouter();
+
+    useEffect(() => {
+        setIsClient(true); 
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -32,6 +37,10 @@ export default function Login() {
             setError("Nome de usuário ou senha incorretos."); 
         }
     };
+
+    if (!isClient) {
+        return null; 
+    }
 
     return (
         <Container maxWidth="sm" className="flex justify-center items-center min-h-screen">
