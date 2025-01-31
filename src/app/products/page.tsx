@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import ProductList from "./ProductList";
+import LogoutButton from "../../../components/Buttons/Logout";
 
 async function fetchProducts(query: string) {
     const res = await fetch(`https://dummyjson.com/products/search?q=${query}`, {
@@ -20,7 +21,10 @@ export default async function ProductsPage({ searchParams }: { searchParams: { q
  
     return (
         <div className="p-5">
-            <h1 className="text-xl font-bold mb-3">Products</h1>
+            <div className="flex justify-between items-center mb-5">
+                <h1 className="text-xl font-bold mb-3">Products</h1>
+                <LogoutButton />  
+            </div>
 
             <form action="/products" method="get" className="mb-5">
                 <input
