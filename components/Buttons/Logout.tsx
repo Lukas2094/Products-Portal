@@ -1,16 +1,28 @@
-"use client"; 
+"use client";
 
-import { signOut } from "next-auth/react"; 
+import { useEffect, useState } from "react";
+import { signOut } from "next-auth/react";
 
 const LogoutButton = () => {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true); 
+    }, []);
+
+    if (!isClient) {
+        return null; 
+    }
+
     const handleLogout = () => {
-        signOut({ callbackUrl: "/login" }); 
+        signOut({ callbackUrl: "/login" });
     };
 
     return (
         <button
             onClick={handleLogout}
-            className="bg-red-500 text-white p-2 rounded-md mt-5"
+            className="text-white p-2 rounded-md mt-5"
+            style={{ backgroundColor: "red" }}
         >
             Logout
         </button>
