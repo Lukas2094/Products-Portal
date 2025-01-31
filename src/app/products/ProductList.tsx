@@ -1,15 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ProductList({ product }: any) {
 
-
-    console.log(product);
-    
-
     return (
-        <ul className="grid grid-cols-6 gap-3">
+        <ul className="grid grid-cols-4 gap-3">
             {product.map((item: any) => (
                 <motion.li
                     key={item.id}
@@ -19,9 +16,11 @@ export default function ProductList({ product }: any) {
                     className="p-4 border rounded shadow-lg"
                 >
                     <div className="w-auto flex items-center justify-center">
-                       <img
-
-                        src={item.images}
+                       <Image
+                        width={700}
+                        height={700}
+                        quality={100}
+                        src={item.images && item.images.length > 0 ? item.images[0] : null}
                         alt={item.title}
                         className="w-10/12 h-48 object-contain rounded-t"
                     />  
