@@ -2,16 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
+import { Button } from "@mui/material";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 const LogoutButton = () => {
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        setIsClient(true); 
+        setIsClient(true);
     }, []);
 
     if (!isClient) {
-        return null; 
+        return null;
     }
 
     const handleLogout = () => {
@@ -19,13 +21,15 @@ const LogoutButton = () => {
     };
 
     return (
-        <button
+        <Button
             onClick={handleLogout}
-            className="text-white p-2 rounded-md mt-5"
-            style={{ backgroundColor: "red" }}
+            variant="contained"
+            color="error"
+            startIcon={<LogoutOutlinedIcon />}
+            sx={{ mr: 2 , alignItems: 'center' , display: 'flex' ,  justifyContent: 'center' , fontWeight: 'bold' }}
         >
             Logout
-        </button>
+        </Button>
     );
 };
 

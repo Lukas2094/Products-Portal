@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata  } from "next";
 import "./globals.css";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useSession } from "next-auth/react";
+import React from "react";
 
 export const metadata: Metadata = {
     title: "Products Portal",

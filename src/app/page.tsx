@@ -1,20 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container, Box, Button, Typography } from "@mui/material";
+import { Container, Button, Typography } from "@mui/material";
 import Image from "next/image";
 
 export default function HomePage() {
   return (
     <Container className="flex flex-col items-center justify-center min-h-screen">
-      {/* Animação do Box principal */}
+
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="mb-5 flex items-center justify-center flex-col"
       >
-        {/* Imagem animada */}
+
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,6 @@ export default function HomePage() {
           />
         </motion.div>
 
-        {/* Título animado */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,7 +40,7 @@ export default function HomePage() {
           </Typography>
         </motion.div>
 
-        {/* Parágrafo animado */}
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,7 +51,7 @@ export default function HomePage() {
         </motion.p>
       </motion.div>
 
-      {/* Botão animado */}
+
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
