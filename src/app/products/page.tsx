@@ -7,7 +7,8 @@ import { Box, Container, Typography } from "@mui/material";
 import { fetchProducts } from "../api/productsApi/getProducts";
 
 export default async function ProductsPage({ searchParams }: { searchParams: { q: string } }) {
-    const query = searchParams.q || ""; 
+    const params = await searchParams;
+    const query = params.q ?? "";
     const products = await fetchProducts(query);
     
     return (
