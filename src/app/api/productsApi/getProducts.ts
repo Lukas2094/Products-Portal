@@ -1,5 +1,5 @@
 export async function fetchProducts(query: string) {
-    const url = process.env.NEXTAUTH_URL
+    const url = process.env.ENDPOINT;
     const res = await fetch(`${url}/products/search?q=${query}`, {
         next: { revalidate: 60 },
     });
